@@ -1,24 +1,33 @@
 public class Main {
     public static void main(String[] args) {
-        int[] datos = {10, 100, 35, 60, 75, 45, 15, 16, 28, 95, 74, 20};
-        int num_buscado, liminferior, limsuperior;
+        int i, j, num_Buscado, mitad;
+        int[] datos = {5, 6, 7, 8, 9, 10, 11};
 
-        limsuperior = datos.length-1;
-        //num_buscado = datos[(int) (Math.random() * 11)];
-        num_buscado = 200;
+        num_Buscado = 5;
 
-        System.out.println("Vamos a buscar el dato " + num_buscado);
+        i = 0;
+        j = datos.length - 1;
 
-        for (liminferior = 0; liminferior<=limsuperior; liminferior++) {
-            if (datos[liminferior] == num_buscado) {
-                System.out.println("Se ha encontrado el dato en la posición " +
-                        liminferior + " de la lista de datos");
-                break;
-            } else if (liminferior == limsuperior) {
-                System.out.println("No se ha encontrado el dato");
+        mitad = (i + j)/2;
+
+        while (i!=j) {
+            if (num_Buscado > datos[mitad]) {
+                i = mitad + 1;
+
+                mitad = (i + j)/2;
+            }
+            else if (num_Buscado < datos[mitad]) {
+                j = mitad - 1;
+
+                mitad = (i + j)/2;
             }
         }
-        System.out.println("Prueba de commit");
-        System.out.println("HOLA");
+        if (datos[mitad] == num_Buscado) {
+            System.out.println("Felicidades, hemos encontrado el dato " + num_Buscado +
+                    " está en la posición " + mitad + " de la lista de datos");
+        }
+        else {
+            System.out.println("No se ha encontrado el dato que se está buscando");
+        }
     }
 }
